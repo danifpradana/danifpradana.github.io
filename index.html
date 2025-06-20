@@ -1,152 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danif Pradana</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.75; /* Slightly more generous line height */
-            color: #343a40; /* A softer, more refined dark gray for body text */
-            background-color: #f8f9fa; /* A very light, clean off-white */
-            margin: 0;
-            padding: 40px 20px; /* Add padding to body for smaller screens */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align to top if content is short */
-            min-height: 100vh;
-            text-align: left;
-            -webkit-font-smoothing: antialiased; /* Smoother fonts on WebKit browsers */
-            -moz-osx-font-smoothing: grayscale; /* Smoother fonts on Firefox */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dan Pradana</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
 
-        .container {
-            max-width: 620px;
-            width: 100%; /* Ensure it doesn't get too narrow on small screens with body padding */
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        h1 {
-            font-size: 2.3em; /* Slightly larger */
-            font-weight: 600; /* Bolder for a strong, clean title */
-            color: #212529; /* A very dark, almost black, but not pure black */
-            margin-top: 0.5em; /* More space above if content is centered top */
-            margin-bottom: 0.6em;
-            letter-spacing: -0.02em; /* Subtle tightening for visual appeal */
-        }
+    body {
+      font-family: 'IBM Plex Mono', monospace;
+      background: #fafafa;
+      color: #333;
+      line-height: 1.6;
+      font-size: 15px;
+      font-weight: 400;
+    }
 
-        h2 {
-            font-size: 1.25em;
-            font-weight: 500; /* Medium weight */
-            color: #495057; /* A slightly lighter, sophisticated gray */
-            margin-top: 2.8em; /* More separation for sections */
-            margin-bottom: 0.8em;
-            letter-spacing: -0.01em;
-            border-bottom: 1px solid #dee2e6; /* Very subtle underline for section title */
-            padding-bottom: 0.3em;
-        }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+      position: relative;
+    }
 
-        p {
-            font-size: 1em; /* Standard size for readability */
-            font-weight: 400; /* Regular weight */
-            margin-bottom: 1.4em;
-            color: #495057; /* Consistent with H2 for content text */
-        }
+    .page-title {
+      font-size: 18px;
+      font-weight: 500;
+      font-family: 'IBM Plex Mono', monospace;
+      text-align: left;
+      margin-bottom: 2rem;
+      color: #000;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.5em 0; /* Space after the list */
-        }
+    .header {
+      margin-bottom: 4rem;
+      position: relative;
+    }
 
-        li {
-            margin-bottom: 0.9em;
-            font-size: 0.95em; /* Slightly smaller for list items if desired */
-        }
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
 
-        li strong { /* To style the link text if you wrap it in strong */
-            font-weight: 500;
-            color: #0056b3; /* A refined blue */
-        }
+    .logo-svg {
+      width: 100%;
+      height: 100%;
+    }
 
-        a {
-            color: #0056b3; /* A refined, accessible blue */
-            text-decoration: none;
-            font-weight: 400; /* Make links not overly bold by default */
-            transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
-            border-bottom: 1px solid transparent; /* Placeholder for hover effect */
-        }
+    .main-content {
+      margin-bottom: 3rem;
+    }
 
-        a:hover, a:focus {
-            color: #003d80; /* Darker blue on hover/focus */
-            border-bottom: 1px solid #004c99; /* Subtle underline appears on hover */
-        }
+    .intro-text, .projects-text, .current-work, .collaboration {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
 
-        .contact-links p {
-            margin-top: 2.5em;
-            font-size: 0.9em;
-            color: #6c757d; /* Lighter gray for less emphasis */
-        }
-        .contact-links a {
-            color: #495057; /* Slightly darker than surrounding text for visibility */
-            font-weight: 500; /* Medium weight for contact links */
-            margin: 0 0.5em;
-        }
-        .contact-links a:hover, .contact-links a:focus {
-            color: #0056b3;
-            border-bottom-color: #0056b3;
-        }
+    .projects-text a, .links a {
+      color: #333;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
 
+    .projects-text a:hover, .links a:hover {
+      text-decoration-thickness: 2px;
+      color: #000;
+    }
 
-        /* Responsive Adjustments */
-        @media (max-width: 600px) {
-            body {
-                align-items: flex-start; /* Align to top on small screens */
-                padding: 30px 15px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            h2 {
-                font-size: 1.15em;
-            }
-            p, li {
-                font-size: 0.95em;
-            }
-            .contact-links p {
-                font-size: 0.85em;
-            }
-        }
-    </style>
+    .custom-links {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      margin-top: 3rem;
+    }
+
+    .custom-links h3 {
+      color: #000;
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 1.5rem;
+    }
+
+    .custom-links .item {
+      margin-bottom: 1.5rem;
+    }
+
+    .custom-links .item a {
+      color: #000;
+      font-weight: 500;
+      text-decoration: none;
+      display: block;
+    }
+
+    .custom-links .item a:hover {
+      text-decoration: underline;
+    }
+
+    .custom-links .desc {
+      font-size: 13px;
+      color: #555;
+      margin-top: 0.25rem;
+    }
+
+    .footer {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: #999;
+      text-align: left;
+      margin-top: 4rem;
+      line-height: 1.6;
+    }
+
+    .footer a {
+      color: #999;
+      text-decoration: underline;
+    }
+
+    .lang-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 3rem 1.5rem 5rem;
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1rem 4rem;
+      }
+
+      .intro-text, .projects-text, .current-work, .collaboration, .links a {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Danif Pradana</h1>
-
-        <p>
-            Based in Jakarta, Indonesia, a copywriter with 10+ years shaping impactful campaigns across advertising, healthcare, and for a leading global financial company. Now channeling this storytelling expertise into exploring the potential of Large Language Models (LLMs) and Generative AI in creative expression.
-        </p>
-
-        <h2>Works</h2>
-        <ul>
-            <li>
-                <a href="https://www.behance.net/danifpradana" target="_blank" rel="noopener noreferrer"><strong>Copywriting Portfolio</strong></a> — Selected works showcasing copywriting across diverse industries.
-            </li>
-            <li>
-                <a href="https://mxvdxn.xyz/" target="_blank" rel="noopener noreferrer"><strong>MXVDXN</strong></a> — A personal cultural research lab leveraging GenAI to explore Asian urban subcultures and reshape lived experiences.
-            </li>
-        </ul>
-
-        <div class="contact-links">
-            <p>
-                <a href="https://x.com/mxvdxn" target="_blank" rel="noopener noreferrer">X</a>
-                 |  <!-- Using   for non-breaking space around separator -->
-                <a href="mailto:danifpradana@gmail.com">Email</a>
-            </p>
-        </div>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <svg class="logo-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 30 Q40 10, 60 30 T100 30" stroke="#333" stroke-width="2" fill="none"/>
+          <circle cx="35" cy="45" r="8" stroke="#333" stroke-width="1.5" fill="none"/>
+          <path d="M35 37 L35 53 M27 45 L43 45" stroke="#333" stroke-width="1"/>
+          <path d="M50 60 L70 40 M50 40 L70 60" stroke="#333" stroke-width="1.5"/>
+          <circle cx="85" cy="50" r="12" stroke="#333" stroke-width="1.5" fill="none"/>
+          <path d="M85 42 L89 46 L85 50 L81 46 Z M85 50 L89 54 L85 58 L81 54 Z" fill="#333"/>
+          <path d="M30 80 Q50 70, 70 80 Q90 90, 100 70" stroke="#333" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
     </div>
+
+    <div class="page-title">Creative × Gen AI Specialist</div>
+
+    <div class="main-content">
+      <p class="intro-text">
+        <strong>Dan Pradana</strong> is an advertising copywriter with over a decade of experience in the ad industry. He's now focusing on the world of Generative AI—exploring its potential across visuals, video, and language models. Now focused on the collective mind of Asian urban subcultures, Dan blends alt-media vibes, lo-fi aesthetics, and ad-world curiosity to invent new narratives from Southeast Asia. This is where indie zine culture meets creative tech—experimenting beyond the brief with a multi-modal creative toolkit.
+      </p>
+
+      <p class="projects-text">
+        <strong>MXVDXN</strong> — Dan's personal research lab, exploring the collective mind and decoding the shifting zeitgeist of Asian urban sub-cultures. A practice in sensing, dreaming, and reshaping lived experience.
+      </p>
+
+      <p class="collaboration">
+        <strong>Creative Partnership:</strong><br>
+        Hailuo Minimax / Kling AI / Luma Labs / Vidu / Freepik<br>
+      </p>
+
+      <p class="collaboration">
+        <strong>Exhibition:</strong><br>
+        2025 — <em>AIgorithm: AI Art Exhibition</em> / Orès Collective<br>
+      </p>
+
+      <div class="custom-links">
+        <h3>// Works & Platforms</h3>
+
+        <div class="item">
+          <a href="https://behance.net/danifpradana" target="_blank">➜ behance.net/danifpradana</a>
+          <div class="desc">Campaigns and brand copy across industries</div>
+        </div>
+
+        <div class="item">
+          <a href="https://youtube.com/@mxvdxn" target="_blank">➜ youtube.com/@mxvdxn</a>
+          <div class="desc">GenAI video works</div>
+        </div>
+
+        <div class="item">
+          <a href="https://medium.com/@mxvdxn" target="_blank">➜ medium.com/@mxvdxn</a>
+          <div class="desc">Cultural insights and GenAI documentation</div>
+        </div>
+
+        <div class="item">
+          <a href="https://tiktok.com/@mxvdxn.labs" target="_blank">➜ tiktok.com/@mxvdxn.labs</a>
+          <div class="desc">Vertical content and aesthetic experiments</div>
+        </div>
+
+        <div class="item">
+          <a href="https://mxvdxn.gumroad.com" target="_blank">➜ mxvdxn.gumroad.com</a>
+          <div class="desc">Promptbooks and digital tools</div>
+        </div>
+
+        <div class="item">
+          <a href="https://x.com/mxvdxn" target="_blank">➜ x.com/mxvdxn</a>
+          <div class="desc">Daily experiments and GenAI logs</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        © Dan Pradana 2025<br>
+        <a href="mailto:danifpradana@gmail.com">danifpradana@gmail.com</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
