@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dan Pradana</title>
+  <title>Dan Pradana ◊ GenAI Creative</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
     * {
       margin: 0;
@@ -14,177 +14,263 @@
     }
 
     body {
-      font-family: 'IBM Plex Mono', monospace;
-      background: #fafafa;
-      color: #333;
-      line-height: 1.6;
-      font-size: 15px;
-      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      background: #fefefe;
+      color: #111;
+      overflow: hidden;
+      height: 100vh;
+      cursor: default;
     }
 
     .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 4rem 2rem 6rem;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       position: relative;
     }
 
-    .page-title {
-      font-size: 18px;
-      font-weight: 500;
-      text-align: left;
-      margin-bottom: 2rem;
-      color: #000;
+    .left-panel {
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .right-panel {
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      position: relative;
     }
 
     .header {
-      margin-bottom: 4rem;
+      z-index: 2;
       position: relative;
     }
 
-    .logo {
-      width: 120px;
-      height: 120px;
-      margin-bottom: 2rem;
-      position: relative;
+    .name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 42px;
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
     }
 
-    .main-content {
-      margin-bottom: 3rem;
-    }
-
-    .intro-text, .projects-text, .current-work, .collaboration {
-      font-size: 15px;
-      line-height: 1.7;
-      color: #333;
-      margin-bottom: 1.5rem;
-    }
-
-    .custom-links {
-      font-size: 14px;
-      margin-top: 3rem;
-    }
-
-    .custom-links h3 {
-      color: #000;
-      font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 1.5rem;
+    .role {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: #111;
+      margin-bottom: 8px;
       text-transform: lowercase;
+      letter-spacing: 0.5px;
     }
 
-    .custom-links .item {
-      margin-bottom: 1.5rem;
+    .tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 400;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-top: 20px;
     }
 
-    .custom-links .item a {
-      color: #000;
+    .bio-section {
+      margin-top: 40px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .bio-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .project-highlight {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
       font-weight: 500;
-      text-decoration: none;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .partnerships {
+      margin-top: 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .partnerships strong {
+      font-weight: 500;
+      color: #111;
+    }
+
+    .links-section {
+      z-index: 2;
+      position: relative;
+    }
+
+    .links-header {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      letter-spacing: -0.01em;
+    }
+
+    .link-item {
+      margin-bottom: 16px;
       display: block;
     }
 
-    .custom-links .item a:hover {
-      text-decoration: underline;
+    .link-item a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 400;
+      color: #111;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
     }
 
-    .custom-links .desc {
-      font-size: 13px;
-      color: #555;
-      margin-top: 0.25rem;
-      text-transform: lowercase;
+    .link-item a:hover {
+      color: #666;
+      transform: translateX(2px);
+    }
+
+    .link-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      color: #777;
+      margin-top: 2px;
+      letter-spacing: 0.2px;
     }
 
     .footer {
-      font-size: 13px;
+      z-index: 2;
+      position: relative;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 300;
       color: #999;
-      text-align: left;
-      margin-top: 4rem;
-      line-height: 1.6;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .footer a {
       color: #999;
-      text-decoration: underline;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+      }
+      
+      .left-panel, .right-panel {
+        padding: 40px 30px;
+      }
+      
+      .name {
+        font-size: 36px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="logo">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 30 Q30 10, 50 30 T90 30" stroke="#111" stroke-width="1.8" fill="none"/>
-          <circle cx="60" cy="60" r="18" stroke="#111" stroke-width="1.5" fill="none"/>
-          <path d="M60 42 L60 78" stroke="#111" stroke-width="1"/>
-          <path d="M42 60 L78 60" stroke="#111" stroke-width="1"/>
-          <circle cx="60" cy="60" r="3" fill="#111"/>
-          <circle cx="48" cy="48" r="2" fill="#111"/>
-          <circle cx="72" cy="72" r="2" fill="#111"/>
-          <rect x="85" y="85" width="4" height="4" fill="#111"/>
-          <rect x="90" y="85" width="4" height="4" fill="#111"/>
-          <rect x="85" y="90" width="4" height="4" fill="#111"/>
-          <path d="M20 90 Q40 110, 60 90 T100 90" stroke="#111" stroke-width="1.8" fill="none"/>
-        </svg>
+    <div class="left-panel">
+      <div class="header">
+        <div class="name">Dan Pradana</div>
+        <div class="role">creative × genai specialist</div>
+        <div class="tagline">sensing_dreaming_reshaping</div>
       </div>
-    </div>
 
-    <div class="page-title">Creative × Gen AI Specialist</div>
+      <div class="bio-section">
+        <p class="bio-text">
+           <strong>Danif "Dan" Pradana</strong> is an advertising copywriter with 10+ years exploring the collective mind of asian urban subcultures through genai. blending alt-media vibes, lo-fi aesthetics, and ad-world curiosity to invent new narratives.
+        </p>
+        
+        <div class="project-highlight">
+          <strong>mxvdxn</strong> — personal genai research lab decoding the shifting zeitgeist of asian urban sub-cultures.
+        </div>
 
-    <div class="main-content">
-      <p class="intro-text">
-        <strong>Danif "Dan" Pradana</strong> is an advertising copywriter with over a decade of experience in the ad industry. Now exploring the collective mind of Asian urban subcultures through GenAI. He blends alt-media vibes, lo-fi aesthetics, and ad-world curiosity to invent new narratives. This is where indie zine culture meets creative tech—experimenting beyond the brief.
-      </p>
-
-      <p class="projects-text">
-        <strong>mxvdxn</strong> — Dan's personal GenAI research lab, exploring the collective mind and decoding the shifting zeitgeist of Asian urban sub-cultures. A practice in sensing, dreaming, and reshaping lived experience.
-      </p>
-
-      <p class="collaboration">
-        <strong>creative partnership:</strong><br>
-        hailuo minimax / kling ai / luma labs / vidu / freepik
-      </p>
-
-      <p class="collaboration">
-        <strong>exhibition:</strong><br>
-        2025 — <em>aigorithm: ai art exhibition</em> / orès collective
-      </p>
-
-      <div class="custom-links">
-        <h3><strong>works & platforms</strong><br></h3>
-        <div class="item">
-          <a href="https://behance.net/danifpradana" target="_blank">➜ behance.net/danifpradana</a>
-          <div class="desc">campaigns and brand copy across industries</div>
-        </div>
-        <div class="item">
-          <a href="https://youtube.com/@mxvdxn" target="_blank">➜ youtube.com/@mxvdxn</a>
-          <div class="desc">genai video works</div>
-        </div>
-        <div class="item">
-          <a href="https://medium.com/@mxvdxn" target="_blank">➜ medium.com/@mxvdxn</a>
-          <div class="desc">cultural insights and genai documentation</div>
-        </div>
-        <div class="item">
-          <a href="https://tiktok.com/@mxvdxn.labs" target="_blank">➜ tiktok.com/@mxvdxn.labs</a>
-          <div class="desc">vertical content and aesthetic experiments</div>
-        </div>
-        <div class="item">
-          <a href="https://instagram.com/mxvdxn" target="_blank">➜ instagram.com/mxvdxn</a>
-          <div class="desc">vertical content and aesthetic experiments</div>
-        </div>
-        <div class="item">
-          <a href="https://mxvdxn.gumroad.com" target="_blank">➜ mxvdxn.gumroad.com</a>
-          <div class="desc">promptbooks and digital tools</div>
-        </div>
-        <div class="item">
-          <a href="https://x.com/mxvdxn" target="_blank">➜ x.com/mxvdxn</a>
-          <div class="desc">daily experiments and genai logs</div>
+        <div class="partnerships">
+          <strong>creative partnerships:</strong><br>
+          hailuo minimax / kling ai / luma labs / vidu / freepik<br><br>
+          
+          <strong>exhibition:</strong><br>
+          2025 — <em>aigorithm: ai art exhibition</em> / orès collective
         </div>
       </div>
 
       <div class="footer">
         © dan pradana 2025<br>
         <a href="mailto:danifpradana@gmail.com">danifpradana@gmail.com</a>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="links-section">
+        <div class="links-header">works & platforms</div>
+        
+        <div class="link-item">
+          <a href="https://behance.net/danifpradana" target="_blank">→ behance.net/danifpradana</a>
+          <div class="link-desc">campaigns and brand copy across industries</div>
+        </div>
+        
+        <div class="link-item">
+          <a href="https://youtube.com/@mxvdxn" target="_blank">→ youtube.com/@mxvdxn</a>
+          <div class="link-desc">genai video works</div>
+        </div>
+        
+        <div class="link-item">
+          <a href="https://medium.com/@mxvdxn" target="_blank">→ medium.com/@mxvdxn</a>
+          <div class="link-desc">cultural insights and genai documentation</div>
+        </div>
+        
+        <div class="link-item">
+          <a href="https://tiktok.com/@mxvdxn.labs" target="_blank">→ tiktok.com/@mxvdxn.labs</a>
+          <div class="link-desc">vertical content and aesthetic experiments</div>
+        </div>
+        
+        <div class="link-item">
+          <a href="https://instagram.com/mxvdxn" target="_blank">→ instagram.com/mxvdxn</a>
+          <div class="link-desc">vertical content and aesthetic experiments</div>
+        </div>
+        
+        <div class="link-item">
+          <a href="https://mxvdxn.gumroad.com" target="_blank">→ mxvdxn.gumroad.com</a>
+          <div class="link-desc">promptbooks and digital tools</div>
+        </div>
+        
+        <div class="link-item">
+          <a href="https://x.com/mxvdxn" target="_blank">→ x.com/mxvdxn</a>
+          <div class="link-desc">daily experiments and genai logs</div>
+        </div>
       </div>
     </div>
   </div>
