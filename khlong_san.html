@@ -1,760 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>KHLONG SAN - A Fictional Southeast Asian City</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KHLONG SAN – Field Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'JetBrains Mono', monospace;
-      background: #000;
-      color: #fff;
-      line-height: 1.4;
-      overflow-x: hidden;
-      cursor: crosshair;
-    }
-
-    .noise-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 1000;
-      animation: flicker 3s infinite;
-    }
-
-    @keyframes flicker {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.98; }
-    }
-
-    .container {
-      max-width: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    .header {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 0 40px;
-      background: linear-gradient(135deg, #000 0%, #111 100%);
-      overflow: hidden;
-    }
-
-    .header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 2px,
-        rgba(255,255,255,0.01) 2px,
-        rgba(255,255,255,0.01) 4px
-      );
-    }
-
-    .glitch-text {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(60px, 15vw, 180px);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.05em;
-      line-height: 0.8;
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .glitch-text::before,
-    .glitch-text::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .glitch-text::before {
-      color: #ff0000;
-      animation: glitch-1 0.5s infinite;
-      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-    }
-
-    .glitch-text::after {
-      color: #00ff00;
-      animation: glitch-2 0.5s infinite;
-      clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
-    }
-
-    @keyframes glitch-1 {
-      0%, 100% { transform: translate(0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(-2px, -2px); }
-      60% { transform: translate(2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-    }
-
-    @keyframes glitch-2 {
-      0%, 100% { transform: translate(0); }
-      20% { transform: translate(2px, -2px); }
-      40% { transform: translate(2px, 2px); }
-      60% { transform: translate(-2px, -2px); }
-      80% { transform: translate(-2px, 2px); }
-    }
-
-    .subtitle {
-      font-size: 11px;
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      margin-bottom: 40px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .intro-block {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid #333;
-      padding: 30px;
-      max-width: 600px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .intro-block::before {
-      content: 'SYSTEM_INIT';
-      position: absolute;
-      top: -10px;
-      left: 20px;
-      background: #000;
-      color: #00ff00;
-      padding: 0 10px;
-      font-size: 9px;
-      letter-spacing: 2px;
-    }
-
-    .intro-text {
-      font-size: 13px;
-      color: #ddd;
-      line-height: 1.6;
-    }
-
-    .content-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      min-height: 100vh;
-      border-top: 2px solid #333;
-    }
-
-    .sidebar {
-      background: #111;
-      padding: 60px 40px;
-      border-right: 2px solid #333;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-    }
-
-    .section-block {
-      border: 1px solid #333;
-      margin-bottom: 40px;
-      position: relative;
-    }
-
-    .section-label {
-      background: #000;
-      color: #fff;
-      padding: 5px 15px;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      position: absolute;
-      top: -10px;
-      left: 20px;
-    }
-
-    .section-content {
-      padding: 30px 25px;
-      font-size: 12px;
-      color: #ccc;
-      line-height: 1.7;
-    }
-
-    .section-content strong {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .main-gallery {
-      background: #000;
-      padding: 0;
-      position: relative;
-    }
-
-    .photo-mosaic {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 0;
-    }
-
-    .photo-cell {
-      position: relative;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      border: 1px solid #333;
-      background: #111;
-      cursor: pointer;
-    }
-
-    .photo-cell img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: contrast(1.2) brightness(0.9);
-      transition: all 0.3s ease;
-    }
-
-    .photo-cell:hover img {
-      filter: contrast(1.4) brightness(1.1);
-      transform: scale(1.05);
-    }
-
-    .photo-info {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.9));
-      padding: 20px 15px 15px;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .photo-cell:hover .photo-info {
-      transform: translateY(0);
-    }
-
-    .photo-id {
-      font-size: 9px;
-      color: #00ff00;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 5px;
-    }
-
-    .photo-desc {
-      font-size: 10px;
-      color: #ccc;
-      line-height: 1.3;
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      z-index: 2000;
-      cursor: pointer;
-    }
-
-    .modal.active {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-content {
-      position: relative;
-      max-width: 95%;
-      max-height: 95%;
-      cursor: default;
-    }
-
-    .modal-image {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      filter: contrast(1.2) brightness(0.9);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 10px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .modal-close:hover {
-      color: #ff0000;
-    }
-
-    .modal-info {
-      position: absolute;
-      bottom: -60px;
-      left: 0;
-      right: 0;
-      text-align: center;
-    }
-
-    .modal-id {
-      font-size: 11px;
-      color: #00ff00;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 5px;
-    }
-
-    .modal-desc {
-      font-size: 12px;
-      color: #ccc;
-    }
-
-    .terminal-footer {
-      background: #111;
-      border-top: 2px solid #333;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .terminal-text {
-      font-size: 10px;
-      color: #888;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .terminal-text .green {
-      color: #00ff00;
-    }
-
-    .terminal-text .red {
-      color: #ff0000;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 12px;
-      background: #00ff00;
-      animation: blink 1s infinite;
-      margin-left: 5px;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-
-    .back-link {
-      color: #fff;
-      text-decoration: none;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border: 1px solid #333;
-      padding: 8px 16px;
-      transition: all 0.3s ease;
-    }
-
-    .back-link:hover {
-      background: #fff;
-      color: #000;
-    }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .sidebar {
-        position: relative;
-        height: auto;
-        border-right: none;
-        border-bottom: 2px solid #333;
-      }
-      
-      .header {
-        padding: 0 20px;
-      }
-      
-      .photo-mosaic {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      }
-    }
-
-    @media (max-width: 768px) {
-      .header {
-        padding: 0 15px;
-      }
-      
-      .sidebar {
-        padding: 40px 20px;
-      }
-      
-      .terminal-footer {
-        padding: 15px 20px;
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      .photo-mosaic {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      }
-
-      .modal-info {
-        bottom: -80px;
-      }
-    }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #111;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #333;
-      border-radius: 0;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
+  :root {
+    --bg: #000;
+    --fg: #f5f5f5;
+    --muted: #888;
+    --accent: #ff6b6b; /* Are.na pink‑ish */
+    --border: #222;
+  }
+  * {box-sizing:border-box;margin:0;padding:0;}
+  body {background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.5;}
+  a {color:var(--muted);text-decoration:none;}
+  a:hover {color:var(--accent);}
+  .wrap {width:min(1400px,90%);margin-inline:auto;padding-block:40px;}
+  /* Breadcrumb */
+  .crumbs {font-size:14px;margin-bottom:32px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px;}
+  .crumbs span {white-space:nowrap;}
+  .crumbs span+span:before {content:"/";margin:0 6px;color:var(--muted);} 
+  /* Header */
+  .title {font-size:clamp(32px,5vw,64px);font-weight:700;color:var(--accent);margin-bottom:12px;}
+  .subtitle {font-size:14px;letter-spacing:1px;color:var(--muted);margin-bottom:48px;max-width:600px;}
+  /* Info block (removed) */
+  .sections {display:grid;gap:40px;margin-bottom:64px;}
+  .section {border:1px solid var(--border);padding:24px;}
+  .section h3 {font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin-bottom:12px;}
+  .section p {font-size:14px;color:var(--fg);}
+  /* Gallery */
+  .gallery {display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:40px;margin-bottom:72px;}
+  figure {display:flex;flex-direction:column;gap:8px;}
+  figure img {width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--border);filter:contrast(1.1) brightness(.9);transition:.3s ease;}
+  figure:hover img {transform:scale(1.04);filter:contrast(1.25) brightness(1);} 
+  figcaption {font-size:13px;color:var(--muted);} 
+  /* Footer */
+  footer {border-top:1px solid var(--border);padding-block:24px;font-size:12px;color:var(--muted);display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;}
+  .tag i {color:var(--accent);font-style:normal;}
+  /* Modal lightbox (optional – kept minimal)*/
+  #viewer {position:fixed;inset:0;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:999;}
+  #viewer img {max-width:92%;max-height:92%;border:1px solid var(--border);}  
 </style>
 </head>
 <body>
-  <div class="noise-overlay"></div>
-  
-  <div class="container">
-    <header class="header">
-      <h1 class="glitch-text" data-text="KHLONG SAN">KHLONG SAN</h1>
-      <p class="subtitle">FICTIONAL_SOUTHEAST_ASIAN_CITY.EXE</p>
-      <div class="intro-block">
-        <p class="intro-text">
-          A constructed urban environment synthesized from Bangkok, Ho Chi Minh, Manila, and Jakarta data points. 
-          Rendered fragments and atmospheric captures through computational generation processes.
-        </p>
-      </div>
+  <div class="wrap">
+    <!-- Breadcrumb mimic -->
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <span><a href="#">MVDXN</a></span>
+      <span><a href="#">Dan Pradana</a></span>
+      <span>KHLONG SAN</span>
+    </nav>
+
+    <!-- Channel Header -->
+    <header>
+      <h1 class="title">KHLONG SAN</h1>
+      <p class="subtitle">Glitch, reverb, night‑dreams. As if everything reloads in vapor and error codes.</p>
     </header>
 
-    <div class="content-grid">
-      <aside class="sidebar">
-        <div class="section-block">
-          <div class="section-label">CONTEXT_DATA</div>
-          <div class="section-content">
-            Khlong San is a constructed city based on real urban references from Bangkok, Ho Chi Minh, Manila, and Jakarta. Flooded alleys, plastic chairs, gold jewelry, underground fights, street markets, and neon-lit temples shape its look. It blends the sacred and the everyday—floods are normal, fireworks explode over concrete rooftops, and kids ride motorcycles through shrine-filled backstreets.
-          </div>
-        </div>
+    <!-- Info grid removed as requested -->
 
-        <div class="section-block">
-          <div class="section-label">VISUAL_PROCESS</div>
-          <div class="section-content">
-            All visuals are AI-generated using <strong>Midjourney v7</strong>. But instead of stylized perfection, the focus is on imperfect textures—blurred shots, flash burns, handheld angles. Every frame is designed to resemble street photography, film stills, or documentary footage. The characters often don't look at the camera. They just exist inside this fictional city, shaped by its tension and beauty.
-          </div>
-        </div>
-
-        <div class="section-block">
-          <div class="section-label">SUBJECT_ANALYSIS</div>
-          <div class="section-content">
-            The people of Khlong San are mostly women—seen in subways, alleyways, or standing in floodwaters. Many wear traditional elements mixed with modern grit: grillz, gold chains, ritual headpieces, cheap plastic, and sequins. Their expressions are either passive or unbothered. Nothing is staged. Every image acts like a found moment.
-          </div>
-        </div>
-      </aside>
-
-      <main class="main-gallery">
-        <div class="photo-mosaic">
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuYsKAJaYAA4Q_5?format=jpg&name=4096x4096" data-id="KS_001.jpg" data-desc="Urban fragment capture">
-            <img src="https://pbs.twimg.com/media/GuYsKAJaYAA4Q_5?format=jpg&name=4096x4096" alt="Fragment 01" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_001.jpg</div>
-              <div class="photo-desc">Urban fragment capture</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTaqrGbEAAPWDS?format=jpg&name=4096x4096" data-id="KS_002.jpg" data-desc="Street level documentation">
-            <img src="https://pbs.twimg.com/media/GuTaqrGbEAAPWDS?format=jpg&name=4096x4096" alt="Fragment 02" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_002.jpg</div>
-              <div class="photo-desc">Street level documentation</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTar7ZbMAAs9JT?format=jpg&name=4096x4096" data-id="KS_003.jpg" data-desc="Alley system mapping">
-            <img src="https://pbs.twimg.com/media/GuTar7ZbMAAs9JT?format=jpg&name=4096x4096" alt="Fragment 03" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_003.jpg</div>
-              <div class="photo-desc">Alley system mapping</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTas_ObEAUc-nt?format=jpg&name=4096x4096" data-id="KS_004.jpg" data-desc="Subject behavioral study">
-            <img src="https://pbs.twimg.com/media/GuTas_ObEAUc-nt?format=jpg&name=4096x4096" alt="Fragment 04" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_004.jpg</div>
-              <div class="photo-desc">Subject behavioral study</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTat6JaoAAoDlV?format=jpg&name=4096x4096" data-id="KS_005.jpg" data-desc="Cultural intersection point">
-            <img src="https://pbs.twimg.com/media/GuTat6JaoAAoDlV?format=jpg&name=4096x4096" alt="Fragment 05" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_005.jpg</div>
-              <div class="photo-desc">Cultural intersection point</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTc3vfbIAA2uUG?format=jpg&name=4096x4096" data-id="KS_006.jpg" data-desc="Neon temple district">
-            <img src="https://pbs.twimg.com/media/GuTc3vfbIAA2uUG?format=jpg&name=4096x4096" alt="Fragment 06" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_006.jpg</div>
-              <div class="photo-desc">Neon temple district</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTc3vjaEAAK306?format=jpg&name=4096x4096" data-id="KS_007.jpg" data-desc="Flood zone documentation">
-            <img src="https://pbs.twimg.com/media/GuTc3vjaEAAK306?format=jpg&name=4096x4096" alt="Fragment 07" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_007.jpg</div>
-              <div class="photo-desc">Flood zone documentation</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTc3vxbEAIQ5EQ?format=jpg&name=4096x4096" data-id="KS_008.jpg" data-desc="Market surveillance data">
-            <img src="https://pbs.twimg.com/media/GuTc3vxbEAIQ5EQ?format=jpg&name=4096x4096" alt="Fragment 08" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_008.jpg</div>
-              <div class="photo-desc">Market surveillance data</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTc3vjawAAzzQ9?format=jpg&name=4096x4096" data-id="KS_009.jpg" data-desc="Underground network scan">
-            <img src="https://pbs.twimg.com/media/GuTc3vjawAAzzQ9?format=jpg&name=4096x4096" alt="Fragment 09" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_009.jpg</div>
-              <div class="photo-desc">Underground network scan</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTfJSzbEAEJ3-s?format=jpg&name=4096x4096" data-id="KS_010.jpg" data-desc="Ritual space analysis">
-            <img src="https://pbs.twimg.com/media/GuTfJSzbEAEJ3-s?format=jpg&name=4096x4096" alt="Fragment 10" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_010.jpg</div>
-              <div class="photo-desc">Ritual space analysis</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTfJMdbMAAN7l8?format=jpg&name=4096x4096" data-id="KS_011.jpg" data-desc="Concrete topology study">
-            <img src="https://pbs.twimg.com/media/GuTfJMdbMAAN7l8?format=jpg&name=4096x4096" alt="Fragment 11" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_011.jpg</div>
-              <div class="photo-desc">Concrete topology study</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTfJMEbcAAxWCd?format=jpg&name=4096x4096" data-id="KS_012.jpg" data-desc="Transportation grid mapping">
-            <img src="https://pbs.twimg.com/media/GuTfJMEbcAAxWCd?format=jpg&name=4096x4096" alt="Fragment 12" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_012.jpg</div>
-              <div class="photo-desc">Transportation grid mapping</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GuTfJMHbEAEbKKt?format=jpg&name=4096x4096" data-id="KS_013.jpg" data-desc="Social interaction protocol">
-            <img src="https://pbs.twimg.com/media/GuTfJMHbEAEbKKt?format=jpg&name=4096x4096" alt="Fragment 13" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_013.jpg</div>
-              <div class="photo-desc">Social interaction protocol</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GutFAdMbAAA3LlZ?format=jpg&name=4096x4096" data-id="KS_014.jpg" data-desc="Identity synthesis capture">
-            <img src="https://pbs.twimg.com/media/GutFAdMbAAA3LlZ?format=jpg&name=4096x4096" alt="Fragment 14" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_014.jpg</div>
-              <div class="photo-desc">Identity synthesis capture</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GutFFKDaAAE5qnn?format=jpg&name=4096x4096" data-id="KS_015.jpg" data-desc="Atmospheric density reading">
-            <img src="https://pbs.twimg.com/media/GutFFKDaAAE5qnn?format=jpg&name=4096x4096" alt="Fragment 15" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_015.jpg</div>
-              <div class="photo-desc">Atmospheric density reading</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GutFCiobcAA8syT?format=jpg&name=4096x4096" data-id="KS_016.jpg" data-desc="Cultural artifact logging">
-            <img src="https://pbs.twimg.com/media/GutFCiobcAA8syT?format=jpg&name=4096x4096" alt="Fragment 16" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_016.jpg</div>
-              <div class="photo-desc">Cultural artifact logging</div>
-            </div>
-          </div>
-          
-          <div class="photo-cell" data-src="https://pbs.twimg.com/media/GutFHuIboAAxUHF?format=jpg&name=4096x4096" data-id="KS_017.jpg" data-desc="Final system checkpoint">
-            <img src="https://pbs.twimg.com/media/GutFHuIboAAxUHF?format=jpg&name=4096x4096" alt="Fragment 17" loading="lazy">
-            <div class="photo-info">
-              <div class="photo-id">KS_017.jpg</div>
-              <div class="photo-desc">Final system checkpoint</div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-
-    <!-- Modal for full-size images -->
-    <div class="modal" id="imageModal">
-      <div class="modal-content">
-        <button class="modal-close" id="modalClose">&times;</button>
-        <img class="modal-image" id="modalImage" src="" alt="">
-        <div class="modal-info">
-          <div class="modal-id" id="modalId"></div>
-          <div class="modal-desc" id="modalDesc"></div>
-        </div>
+    <!-- Context blocks -->
+    <section class="sections">
+      <div class="section">
+        <h3>Context_Data</h3>
+        <p>Khlong San is a constructed city based on urban references from Bangkok, Ho Chi Minh, Manila, and Jakarta. Flooded alleys, plastic chairs, gold jewelry, underground fights, street markets, and neon‑lit temples shape its look. It blends the sacred and the everyday—kids ride motorcycles through shrine‑filled backstreets.</p>
       </div>
-    </div>
-
-    <footer class="terminal-footer">
-      <div class="terminal-text">
-        <span class="green">GENERATED_WITH:</span> MIDJOURNEY_V7 
-        <span class="red">|</span> 
-        <span class="green">CREATED_BY:</span> DAN_PRADANA_/_MXVDXN_2025
-        <span class="cursor"></span>
+      <div class="section">
+        <h3>Visual_Process</h3>
+        <p>All visuals were AI‑generated with <strong>Midjourney v7</strong>. Focus is on imperfect textures—blurred shots, flash burns, handheld angles. Every frame resembles street photography or documentary footage. Characters rarely look at the camera; they simply exist inside this fictional city.</p>
       </div>
-      <a href="https://danifpradana.github.io" class="back-link">RETURN_TO_MAIN</a>
+      <div class="section">
+        <h3>Subject_Analysis</h3>
+        <p>The inhabitants are mostly women—seen in subways, alleyways, or standing in floodwaters. Traditional elements mix with modern grit: grillz, gold chains, ritual headpieces, cheap plastic, sequins. Expressions remain passive; nothing is staged. Each image feels like a found moment.</p>
+      </div>
+    </section>
+
+    <!-- Image Grid -->
+    <section class="gallery" id="gallery">
+      <!-- Each figure preserves href/src/alt exactly as before -->
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuYsKAJaYAA4Q_5?format=jpg&name=4096x4096" data-id="KS_001.jpg" data-desc="Urban fragment capture"><img src="https://pbs.twimg.com/media/GuYsKAJaYAA4Q_5?format=jpg&name=4096x4096" alt="KS_001.jpg" loading="lazy"/></a>
+        <figcaption>KS_001.jpg — Urban fragment capture</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTaqrGbEAAPWDS?format=jpg&name=4096x4096" data-id="KS_002.jpg" data-desc="Street level documentation"><img src="https://pbs.twimg.com/media/GuTaqrGbEAAPWDS?format=jpg&name=4096x4096" alt="KS_002.jpg" loading="lazy"/></a>
+        <figcaption>KS_002.jpg — Street level documentation</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTar7ZbMAAs9JT?format=jpg&name=4096x4096" data-id="KS_003.jpg" data-desc="Alley system mapping"><img src="https://pbs.twimg.com/media/GuTar7ZbMAAs9JT?format=jpg&name=4096x4096" alt="KS_003.jpg" loading="lazy"/></a>
+        <figcaption>KS_003.jpg — Alley system mapping</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTas_ObEAUc-nt?format=jpg&name=4096x4096" data-id="KS_004.jpg" data-desc="Subject behavioral study"><img src="https://pbs.twimg.com/media/GuTas_ObEAUc-nt?format=jpg&name=4096x4096" alt="KS_004.jpg" loading="lazy"/></a>
+        <figcaption>KS_004.jpg — Subject behavioral study</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTat6JaoAAoDlV?format=jpg&name=4096x4096" data-id="KS_005.jpg" data-desc="Cultural intersection point"><img src="https://pbs.twimg.com/media/GuTat6JaoAAoDlV?format=jpg&name=4096x4096" alt="KS_005.jpg" loading="lazy"/></a>
+        <figcaption>KS_005.jpg — Cultural intersection point</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTc3vfbIAA2uUG?format=jpg&name=4096x4096" data-id="KS_006.jpg" data-desc="Neon temple district"><img src="https://pbs.twimg.com/media/GuTc3vfbIAA2uUG?format=jpg&name=4096x4096" alt="KS_006.jpg" loading="lazy"/></a>
+        <figcaption>KS_006.jpg — Neon temple district</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTc3vjaEAAK306?format=jpg&name=4096x4096" data-id="KS_007.jpg" data-desc="Flood zone documentation"><img src="https://pbs.twimg.com/media/GuTc3vjaEAAK306?format=jpg&name=4096x4096" alt="KS_007.jpg" loading="lazy"/></a>
+        <figcaption>KS_007.jpg — Flood zone documentation</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTc3vxbEAIQ5EQ?format=jpg&name=4096x4096" data-id="KS_008.jpg" data-desc="Market surveillance data"><img src="https://pbs.twimg.com/media/GuTc3vxbEAIQ5EQ?format=jpg&name=4096x4096" alt="KS_008.jpg" loading="lazy"/></a>
+        <figcaption>KS_008.jpg — Market surveillance data</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTc3vjawAAzzQ9?format=jpg&name=4096x4096" data-id="KS_009.jpg" data-desc="Underground network scan"><img src="https://pbs.twimg.com/media/GuTc3vjawAAzzQ9?format=jpg&name=4096x4096" alt="KS_009.jpg" loading="lazy"/></a>
+        <figcaption>KS_009.jpg — Underground network scan</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTfJSzbEAEJ3-s?format=jpg&name=4096x4096" data-id="KS_010.jpg" data-desc="Ritual space analysis"><img src="https://pbs.twimg.com/media/GuTfJSzbEAEJ3-s?format=jpg&name=4096x4096" alt="KS_010.jpg" loading="lazy"/></a>
+        <figcaption>KS_010.jpg — Ritual space analysis</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTfJMdbMAAN7l8?format=jpg&name=4096x4096" data-id="KS_011.jpg" data-desc="Concrete topology study"><img src="https://pbs.twimg.com/media/GuTfJMdbMAAN7l8?format=jpg&name=4096x4096" alt="KS_011.jpg" loading="lazy"/></a>
+        <figcaption>KS_011.jpg — Concrete topology study</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTfJMEbcAAxWCd?format=jpg&name=4096x4096" data-id="KS_012.jpg" data-desc="Transportation grid mapping"><img src="https://pbs.twimg.com/media/GuTfJMEbcAAxWCd?format=jpg&name=4096x4096" alt="KS_012.jpg" loading="lazy"/></a>
+        <figcaption>KS_012.jpg — Transportation grid mapping</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GuTfJMHbEAEbKKt?format=jpg&name=4096x4096" data-id="KS_013.jpg" data-desc="Social interaction protocol"><img src="https://pbs.twimg.com/media/GuTfJMHbEAEbKKt?format=jpg&name=4096x4096" alt="KS_013.jpg" loading="lazy"/></a>
+        <figcaption>KS_013.jpg — Social interaction protocol</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GutFAdMbAAA3LlZ?format=jpg&name=4096x4096" data-id="KS_014.jpg" data-desc="Identity synthesis capture"><img src="https://pbs.twimg.com/media/GutFAdMbAAA3LlZ?format=jpg&name=4096x4096" alt="KS_014.jpg" loading="lazy"/></a>
+        <figcaption>KS_014.jpg — Identity synthesis capture</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GutFFKDaAAE5qnn?format=jpg&name=4096x4096" data-id="KS_015.jpg" data-desc="Atmospheric density reading"><img src="https://pbs.twimg.com/media/GutFFKDaAAE5qnn?format=jpg&name=4096x4096" alt="KS_015.jpg" loading="lazy"/></a>
+        <figcaption>KS_015.jpg — Atmospheric density reading</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GutFCiobcAA8syT?format=jpg&name=4096x4096" data-id="KS_016.jpg" data-desc="Cultural artifact logging"><img src="https://pbs.twimg.com/media/GutFCiobcAA8syT?format=jpg&name=4096x4096" alt="KS_016.jpg" loading="lazy"/></a>
+        <figcaption>KS_016.jpg — Cultural artifact logging</figcaption>
+      </figure>
+      <figure>
+        <a href="https://pbs.twimg.com/media/GutFHuIboAAxUHF?format=jpg&name=4096x4096" data-id="KS_017.jpg" data-desc="Final system checkpoint"><img src="https://pbs.twimg.com/media/GutFHuIboAAxUHF?format=jpg&name=4096x4096" alt="KS_017.jpg" loading="lazy"/></a>
+        <figcaption>KS_017.jpg — Final system checkpoint</figcaption>
+      </figure>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <span class="tag"><i>generated_with:</i> Midjourney v7</span>
+      <span class="tag"><i>created_by:</i> DAN_PRADANA_/_MXVDXN_2025</span>
     </footer>
   </div>
 
+  <!-- simple viewer -->
+  <div id="viewer"><img src="" alt="view"/></div>
   <script>
-    // Enhanced image loading with glitch effect
-    document.addEventListener('DOMContentLoaded', function() {
-      const images = document.querySelectorAll('.photo-cell img');
-      const modal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      const modalId = document.getElementById('modalId');
-      const modalDesc = document.getElementById('modalDesc');
-      const modalClose = document.getElementById('modalClose');
-      const photoCells = document.querySelectorAll('.photo-cell');
-      
-      images.forEach((img, index) => {
-        img.addEventListener('load', function() {
-          // Stagger the appearance
-          setTimeout(() => {
-            this.style.opacity = '1';
-            this.style.transform = 'scale(1)';
-          }, index * 100);
-        });
-        
-        // Initial state
-        img.style.opacity = '0';
-        img.style.transform = 'scale(0.95)';
-        img.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        
-        // If already loaded
-        if (img.complete) {
-          setTimeout(() => {
-            img.style.opacity = '1';
-            img.style.transform = 'scale(1)';
-          }, index * 100);
-        }
-      });
-
-      // Modal functionality
-      photoCells.forEach(cell => {
-        cell.addEventListener('click', function() {
-          const src = this.getAttribute('data-src');
-          const id = this.getAttribute('data-id');
-          const desc = this.getAttribute('data-desc');
-          
-          modalImage.src = src;
-          modalId.textContent = id;
-          modalDesc.textContent = desc;
-          modal.classList.add('active');
-          
-          // Prevent body scrolling
-          document.body.style.overflow = 'hidden';
-        });
-      });
-
-      // Close modal
-      function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      modalClose.addEventListener('click', closeModal);
-      
-      // Close modal when clicking outside the image
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
-
-      // Close modal with Escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+    const viewer=document.getElementById('viewer');
+    const viewImg=viewer.querySelector('img');
+    document.querySelectorAll('.gallery a').forEach(a=>{
+      a.addEventListener('click',e=>{e.preventDefault();viewImg.src=a.href;viewer.style.display='flex';});
     });
-
-    // Terminal cursor animation timing
-    setInterval(() => {
-      const cursor = document.querySelector('.cursor');
-      if (cursor) {
-        cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-      }
-    }, 500);
-
-    // Random glitch effect on title
-    setInterval(() => {
-      const glitchText = document.querySelector('.glitch-text');
-      if (Math.random() < 0.1) {
-        glitchText.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
-        setTimeout(() => {
-          glitchText.style.transform = 'translate(0, 0)';
-        }, 50);
-      }
-    }, 2000);
+    viewer.addEventListener('click',()=>{viewer.style.display='none';viewImg.src='';});
   </script>
 </body>
 </html>
