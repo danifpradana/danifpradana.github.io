@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>creative × genai specialist</title>
+<title>Dan Pradana — Research</title>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap');
 
     * {
       margin: 0;
@@ -15,565 +15,343 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #000;
-      overflow: hidden;
-      height: 100vh;
-      cursor: default;
+      background: #fafafa;
+      color: #333;
+      line-height: 1.6;
       font-size: 14px;
-      line-height: 1.4;
     }
 
-    .main-container {
-      height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      position: relative;
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 30px;
     }
 
-    .left-section {
-      display: flex;
-      flex-direction: column;
-      padding: 60px;
-      justify-content: space-between;
+    .header {
+      margin-bottom: 60px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #eee;
     }
 
-    .header-area {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 40px;
-    }
-
-    .title-block {
-      max-width: 60%;
-    }
-
-    .main-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(28px, 4vw, 48px);
-      font-weight: 700;
-      color: #000;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      line-height: 0.9;
+    .name {
+      font-size: 28px;
+      font-weight: 600;
+      color: #1a1a1a;
       margin-bottom: 8px;
     }
 
-    .subtitle {
-      font-size: 12px;
+    .title {
+      font-size: 14px;
       color: #666;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 400;
+      margin-bottom: 20px;
     }
 
-    .status-area {
-      text-align: right;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .bio {
+      font-size: 15px;
+      color: #555;
+      max-width: 700px;
+      line-height: 1.7;
     }
 
-    .content-grid {
+    .main-content {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 1fr;
       gap: 60px;
-      flex: 1;
-      align-items: start;
     }
 
-    .bio-section {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #f0f0f0;
-      padding-bottom: 8px;
-    }
-
-    .section-content {
-      font-size: 13px;
-      line-height: 1.6;
-      color: #333;
-    }
-
-    .section-content strong {
-      color: #000;
-      font-weight: 600;
-    }
-
-    .platforms-section {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .platform-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #f5f5f5;
-      font-size: 12px;
-    }
-
-    .platform-name {
-      font-weight: 500;
-      color: #000;
-      min-width: 80px;
-    }
-
-    .platform-url {
-      flex: 1;
-      margin: 0 20px;
-    }
-
-    .platform-url a {
-      color: #666;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-    }
-
-    .platform-url a:hover {
-      background: #000;
-      color: #fff;
-      padding: 4px 8px;
-      margin: -4px -8px;
-      border-radius: 2px;
-    }
-
-    .platform-status {
-      font-size: 10px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .right-sidebar {
-      background: #fafafa;
-      border-left: 1px solid #e5e5e5;
-      padding: 60px 40px;
+    .projects {
       display: flex;
       flex-direction: column;
       gap: 40px;
-      overflow-y: auto;
     }
 
-    .sidebar-section {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    .project {
+      padding-bottom: 30px;
+      border-bottom: 1px solid #f0f0f0;
     }
 
-    .sidebar-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
+    .project:last-child {
+      border-bottom: none;
+    }
+
+    .project-category {
+      font-size: 11px;
       color: #999;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      border-bottom: 1px solid #e5e5e5;
-      padding-bottom: 8px;
-      cursor: pointer;
-      transition: color 0.2s ease;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .sidebar-title:hover {
-      color: #666;
-    }
-
-    .sidebar-title.non-collapsible {
-      cursor: default;
-    }
-
-    .sidebar-title.non-collapsible:hover {
-      color: #999;
-    }
-
-    .collapse-indicator {
-      font-size: 10px;
-      transition: transform 0.3s ease;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
       font-weight: 500;
     }
 
-    .collapse-indicator.expanded {
-      transform: rotate(90deg);
+    .project-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 12px;
     }
 
-    .collapsible-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
+    .project-description {
+      color: #555;
+      margin-bottom: 15px;
+      line-height: 1.6;
     }
 
-    .collapsible-content.expanded {
-      max-height: 300px;
-    }
-
-    .sidebar-content {
-      font-size: 11px;
-      line-height: 1.5;
-      color: #666;
-    }
-
-    .sidebar-content a {
-      color: #000;
+    .project-link {
+      font-size: 13px;
+      color: #0066cc;
       text-decoration: none;
-      transition: all 0.2s ease;
-      display: inline-block;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
     }
 
-    .sidebar-content a:hover {
-      background: #000;
-      color: #fff;
-      padding: 2px 6px;
-      margin: -2px -6px;
-      border-radius: 2px;
+    .project-link:hover {
+      border-bottom-color: #0066cc;
     }
 
-    .index-list {
+    .code-snippet {
+      background: #f8f8f8;
+      border: 1px solid #e8e8e8;
+      padding: 15px;
+      margin: 15px 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #555;
+      border-radius: 3px;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+
+    .sidebar-section {
+      padding-bottom: 25px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .sidebar-section:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-title {
+      font-size: 12px;
+      color: #1a1a1a;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .contact-info {
+      font-size: 13px;
+      color: #555;
+    }
+
+    .contact-info a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .platform-list {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
-    .index-item {
-      font-size: 11px;
-      color: #666;
-    }
-
-    .index-item.active {
-      color: #000;
-      font-weight: 500;
-    }
-
-    .index-item a {
-      color: inherit;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      display: block;
-      padding: 4px 0;
-    }
-
-    .index-item a:hover {
-      background: #000;
-      color: #fff;
-      padding: 4px 8px;
-      margin: 0 -8px;
-      border-radius: 2px;
-    }
-
-    .footer-area {
+    .platform-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 30px;
-      border-top: 1px solid #f0f0f0;
-      margin-top: 20px;
+      font-size: 13px;
     }
 
-    .footer-left {
+    .platform-name {
+      color: #555;
+      font-weight: 500;
+    }
+
+    .platform-link {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .footer-right {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 9px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .footer-right a {
-      color: #666;
+      font-size: 11px;
+      color: #0066cc;
       text-decoration: none;
-      margin-left: 15px;
-      transition: all 0.2s ease;
     }
 
-    .footer-right a:hover {
-      background: #000;
-      color: #fff;
-      padding: 2px 6px;
-      margin-left: 9px;
+    .platform-link:hover {
+      text-decoration: underline;
+    }
+
+    .collaborators {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 11px;
+      color: #666;
+    }
+
+    .collab-item {
+      padding: 6px 8px;
+      background: #f8f8f8;
+      border: 1px solid #e8e8e8;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
       border-radius: 2px;
     }
 
-    .research-statement {
+    .exhibition-item {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .exhibition-year {
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .exhibition-org {
       font-family: 'JetBrains Mono', monospace;
       font-size: 11px;
-      color: #000;
-      background: #f8f8f8;
-      padding: 15px;
-      border-left: 3px solid #000;
-      margin-top: 20px;
+      color: #888;
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding-top: 30px;
+      border-top: 1px solid #eee;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
     }
 
     /* Mobile Responsive */
-    @media (max-width: 1024px) {
-      .main-container {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr auto;
-        overflow-y: auto;
-      }
-      
-      body {
-        overflow-y: auto;
-        height: auto;
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 20px;
       }
 
-      .left-section {
-        padding: 40px 30px;
-        min-height: calc(100vh - 300px);
-      }
-
-      .content-grid {
+      .main-content {
         grid-template-columns: 1fr;
         gap: 40px;
       }
 
-      .right-sidebar {
-        border-left: none;
-        border-top: 1px solid #e5e5e5;
-        padding: 40px 30px;
-        background: #f8f8f8;
+      .collaborators {
+        grid-template-columns: 1fr;
       }
 
-      .header-area {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-      }
-
-      .title-block {
-        max-width: 100%;
-      }
-
-      .status-area {
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .left-section {
-        padding: 30px 20px;
-      }
-
-      .right-sidebar {
-        padding: 30px 20px;
-      }
-
-      .platform-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 15px 0;
-      }
-
-      .platform-url {
-        margin: 0;
+      .name {
+        font-size: 24px;
       }
     }
 
 </style>
 </head>
 <body>
-<div class="main-container">
-  <div class="left-section">
-    <div class="header-area">
-      <div class="title-block">
-        <div class="main-title">Dan Pradana</div>
-        <div class="subtitle">creative × genai specialist</div>
-      </div>
-      <div class="status-area">
-        Last Updated: 2025<br/>
-        Status: Active
-      </div>
+<div class="container">
+  <header class="header">
+    <h1 class="name">Dan Pradana</h1>
+    <div class="title">Cultural Researcher & Prompt Engineer</div>
+    <div class="bio">
+      <strong>From Ad Copy to Prompt Engineering: Decoding Asian Urban Subcultures</strong><br><br>
+      Dan Pradana ditched traditional advertising to become a cultural archaeologist in the age of AI. Now prompts are his new copywriting language, excavating the collective consciousness of Asian street culture. MXVDXN is his cultural research lab investigating these subcultures through generative AI methodologies.
     </div>
+  </header>
 
-    <div class="content-grid">
-      <div class="bio-section">
-        <div>
-          <div class="section-label">Bio_Data</div>
-          <div class="section-content">
-            <strong>Dan Pradana</strong> is an advertising copywriter with over a decade of experience in the ad industry. Now exploring the collective mind of Asian urban subcultures through GenAI. Dan blends alt-media vibes, lo-fi aesthetics, and ad-world curiosity to invent new narratives. This is where indie zine culture meets creative tech—experimenting beyond the brief.
-          </div>
+  <div class="main-content">
+    <main class="projects">
+      <div class="project">
+        <div class="project-category">Feature Project</div>
+        <h2 class="project-title">Tumbal Tuesday: Digital Possession Archive</h2>
+        <p class="project-description">
+          Examining the collision between Indonesia's spiritual DNA and hyperconnected reality. Through AI-generated hypermaximalist imagery, this ongoing archive captures how Indonesian youth navigate between traditional cultural practices and digital spaces.
+        </p>
+        <div class="code-snippet">
+prompt digital_animism --context indonesian_youth
+--method hypermaximalist_imagery --output cultural_possession
+--frequency tuesday --seed sacred_chaos
         </div>
-
-        <div>
-          <div class="section-label">Primary_Research</div>
-          <div class="section-content">
-            <strong>MXVDXN</strong> — Dan's personal GenAI research lab, exploring the collective mind and decoding the shifting zeitgeist of Asian urban sub-cultures. A practice in sensing, dreaming, and reshaping lived experience.
-          </div>
-        </div>
-
-        <div class="research-statement">
-          prompt sensing_dreaming_reshaping --seed 2025
-        </div>
+        <a href="https://danifpradana.github.io/tumbal-tuesday/" target="_blank" class="project-link">Read Here →</a>
       </div>
 
-      <div class="platforms-section">
-        <div class="section-label">Platform_Directory</div>
-        
-        <div class="platform-item">
-          <div class="platform-name">X (Twitter)</div>
-          <div class="platform-url"><a href="https://x.com/mxvdxn" target="_blank">x.com/mxvdxn</a></div>
-          <div class="platform-status">Active</div>
-        </div>
-
-        <div class="platform-item">
-          <div class="platform-name">Medium</div>
-          <div class="platform-url"><a href="https://medium.com/@mxvdxn" target="_blank">medium.com/@mxvdxn</a></div>
-          <div class="platform-status">Active</div>
-        </div>
-
-        <div class="platform-item">
-          <div class="platform-name">YouTube</div>
-          <div class="platform-url"><a href="https://youtube.com/@mxvdxn" target="_blank">youtube.com/@mxvdxn</a></div>
-          <div class="platform-status">Active</div>
-        </div>
-
-        <div class="platform-item">
-          <div class="platform-name">Instagram</div>
-          <div class="platform-url"><a href="https://instagram.com/mxvdxn" target="_blank">instagram.com/mxvdxn</a></div>
-          <div class="platform-status">Active</div>
-        </div>
-
-        <div class="platform-item">
-          <div class="platform-name">TikTok</div>
-          <div class="platform-url"><a href="https://tiktok.com/@mxvdxn.labs" target="_blank">tiktok.com/@mxvdxn.labs</a></div>
-          <div class="platform-status">Active</div>
-        </div>
-
-        <div class="platform-item">
-          <div class="platform-name">Gumroad</div>
-          <div class="platform-url"><a href="https://mxvdxn.gumroad.com" target="_blank">mxvdxn.gumroad.com</a></div>
-          <div class="platform-status">Active</div>
-        </div>
+      <div class="project">
+        <div class="project-category">Gen AI Labs</div>
+        <h2 class="project-title">MXVDXN: Research Laboratory</h2>
+        <p class="project-description">
+          A systematic investigation into collective consciousness using advanced prompt engineering techniques. This research explores how generative AI can surface, interpret, and reconfigure cultural patterns within Asian urban digital communities, combining computational ethnography with street culture observation.
+        </p>
       </div>
-    </div>
+    </main>
 
-    <div class="footer-area">
-      <div class="footer-left">MXVDXN Research Archive © 2025</div>
-      <div class="footer-right">
-        Database Version 1.0 
-        <a href="mailto:danifpradana@gmail.com">Contact</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="right-sidebar">
-    <div class="sidebar-section">
-      <div class="sidebar-title non-collapsible">Project Index</div>
-      <ul class="index-list">
-        <li class="index-item active"><a href="https://danifpradana.github.io/tumbal-tuesday/" target="_blank">001 // Tumbal Tuesday</a></li>
-      </ul>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-title" onclick="toggleSection(this)">
-        Communities
-        <span class="collapse-indicator">›</span>
-      </div>
-      <div class="collapsible-content">
-        <ul class="index-list">
-          <li class="index-item"><a href="https://x.com/SREFCLUB" target="_blank">SREF CLUB</a></li>
-          <li class="index-item"><a href="https://x.com/i/communities/1900879820764197037" target="_blank">Coffee Ladies</a></li>
-          <li class="index-item"><a href="https://x.com/i/communities/1896856590789365813" target="_blank">Cat Art Tribe 猫会議</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-title" onclick="toggleSection(this)">
-        Contact
-        <span class="collapse-indicator">›</span>
-      </div>
-      <div class="collapsible-content">
-        <div class="sidebar-content">
+    <aside class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-title">Contact</div>
+        <div class="contact-info">
           <a href="mailto:danifpradana@gmail.com">danifpradana@gmail.com</a>
         </div>
       </div>
-    </div>
 
-    <div class="sidebar-section">
-      <div class="sidebar-title" onclick="toggleSection(this)">
-        Partnerships
-        <span class="collapse-indicator">›</span>
+      <div class="sidebar-section">
+        <div class="sidebar-title">Platforms</div>
+        <ul class="platform-list">
+          <li class="platform-item">
+            <span class="platform-name">X/Twitter</span>
+            <a href="https://x.com/mxvdxn" target="_blank" class="platform-link">@mxvdxn</a>
+          </li>
+          <li class="platform-item">
+            <span class="platform-name">Medium</span>
+            <a href="https://medium.com/@mxvdxn" target="_blank" class="platform-link">@mxvdxn</a>
+          </li>
+          <li class="platform-item">
+            <span class="platform-name">Instagram</span>
+            <a href="https://instagram.com/mxvdxn" target="_blank" class="platform-link">@mxvdxn</a>
+          </li>
+          <li class="platform-item">
+            <span class="platform-name">YouTube</span>
+            <a href="https://youtube.com/@mxvdxn" target="_blank" class="platform-link">@mxvdxn</a>
+          </li>
+          <li class="platform-item">
+            <span class="platform-name">TikTok</span>
+            <a href="https://tiktok.com/@mxvdxn.labs" target="_blank" class="platform-link">@mxvdxn.labs</a>
+          </li>
+          <li class="platform-item">
+            <span class="platform-name">Resources</span>
+            <a href="https://mxvdxn.gumroad.com" target="_blank" class="platform-link">gumroad</a>
+          </li>
+        </ul>
       </div>
-      <div class="collapsible-content">
-        <div class="sidebar-content">
-          hailuo minimax<br/>
-          kling ai<br/>
-          luma labs<br/>
-          vidu<br/>
-          freepik<br/>
-          basedlabs ai<br/>
-          higgsfield
+
+      <div class="sidebar-section">
+        <div class="sidebar-title">Creative Partnership</div>
+        <div class="collaborators">
+          <div class="collab-item">hailuo minimax</div>
+          <div class="collab-item">kling ai</div>
+          <div class="collab-item">luma labs</div>
+          <div class="collab-item">vidu</div>
+          <div class="collab-item">freepik</div>
+          <div class="collab-item">basedlabs ai</div>
+          <div class="collab-item">higgsfield</div>
         </div>
       </div>
-    </div>
 
-    <div class="sidebar-section">
-      <div class="sidebar-title" onclick="toggleSection(this)">
-        Exhibitions
-        <span class="collapse-indicator">›</span>
-      </div>
-      <div class="collapsible-content">
-        <div class="sidebar-content">
-          2025 — aigorithm: ai art exhibition / orès collective
+      <div class="sidebar-section">
+        <div class="sidebar-title">Exhibitions</div>
+        <div class="exhibition-item">
+          <span class="exhibition-year">2025</span> — aigorithm: ai art exhibition<br/>
+          <span class="exhibition-org">orès collective</span>
         </div>
       </div>
-    </div>
-
-    <div class="sidebar-section">
-      <div class="sidebar-title" onclick="toggleSection(this)">
-        Version
-        <span class="collapse-indicator">›</span>
-      </div>
-      <div class="collapsible-content">
-        <div class="sidebar-content">
-          --v 7<br/>
-          --seed 2025
-        </div>
-      </div>
-    </div>
+    </aside>
   </div>
-</div>
 
-<script>
-function toggleSection(element) {
-  const content = element.nextElementSibling;
-  const indicator = element.querySelector('.collapse-indicator');
-  
-  if (content.classList.contains('expanded')) {
-    content.classList.remove('expanded');
-    indicator.classList.remove('expanded');
-  } else {
-    content.classList.add('expanded');
-    indicator.classList.add('expanded');
-  }
-}
-</script>
+  <footer class="footer">
+    MXVDXN Research © 2025
+  </footer>
+</div>
 </body>
 </html>
