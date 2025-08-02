@@ -1,357 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Dan Pradana — Research</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAN PRADANA</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ajusa/lit@latest/dist/lit.css" />
+    <style>
+        body {
+            background-color: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+        
+        .text-box {
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        .lite-hr {
+            background-color: #ddd;
+            color: #ddd;
+            border: solid;
+            margin: 20px 0;
+        }
+        
+        .text-right {
+            text-align: right;
+        }
+        
+        .platform-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .x-icon {
+            content: url('https://api.iconify.design/ri/twitter-x-fill.svg');
+        }
+        
+        .medium-icon {
+            content: url('https://api.iconify.design/mdi/medium.svg');
+        }
+        
+        .instagram-icon {
+            content: url('https://api.iconify.design/mdi/instagram.svg');
+        }
+        
+        .youtube-icon {
+            content: url('https://api.iconify.design/mdi/youtube.svg');
+        }
+        
+        .tiktok-icon {
+            content: url('https://api.iconify.design/ic/baseline-tiktok.svg');
+        }
+        
+        .gumroad-icon {
+            content: url('https://api.iconify.design/simple-icons/gumroad.svg');
+        }
+        
+        .email-icon {
+            content: url('https://api.iconify.design/mdi/email.svg');
+        }
+        
+        .green-accent {
+            color: #2d5a27;
+        }
+        
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 13px;
+            color: #495057;
+            overflow-x: auto;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #2d5a27;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .collaboration-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .collab-tag {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #495057;
+            white-space: nowrap;
+        }
+        
+        .project-placeholder {
+            border: 2px dashed #ccc;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+        
+        .project-placeholder h4 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .project-placeholder p {
+            color: #888;
+            font-style: italic;
+        }
+        
+        .social-links {
+            margin: 15px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .social-links a:hover {
+            color: #2d5a27;
+        }
+        
+        .methodology-list {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        
+        .methodology-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .twitter-embed-container {
+            width: 100%;
+            display: block;
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .twitter-embed-container .twitter-tweet {
+            margin: 0 auto !important;
+            display: block !important;
+        }
+            border-bottom: 2px solid #2d5a27;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .bio-section {
+            background: #ffffff;
+            border: 1px solid #e9ecef;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .twitter-embed-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .twitter-embed-container .twitter-tweet {
+            width: 100% !important;
+            max-width: 700px !important;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #fafafa;
-      color: #333;
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 60px 30px;
-    }
-
-    .header {
-      margin-bottom: 60px;
-      padding-bottom: 30px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .name {
-      font-size: 28px;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin-bottom: 8px;
-    }
-
-    .title {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    .bio {
-      font-size: 15px;
-      color: #555;
-      max-width: 700px;
-      line-height: 1.7;
-    }
-
-    .main-content {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 60px;
-    }
-
-    .projects {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    .project {
-      padding-bottom: 30px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .project:last-child {
-      border-bottom: none;
-    }
-
-    .project-category {
-      font-size: 11px;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .project-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin-bottom: 12px;
-    }
-
-    .project-description {
-      color: #555;
-      margin-bottom: 15px;
-      line-height: 1.6;
-    }
-
-    .project-link {
-      font-size: 13px;
-      color: #0066cc;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s ease;
-    }
-
-    .project-link:hover {
-      border-bottom-color: #0066cc;
-    }
-
-    .code-snippet {
-      background: #f8f8f8;
-      border: 1px solid #e8e8e8;
-      padding: 15px;
-      margin: 15px 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: #555;
-      border-radius: 3px;
-    }
-
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 35px;
-    }
-
-    .sidebar-section {
-      padding-bottom: 25px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .sidebar-section:last-child {
-      border-bottom: none;
-    }
-
-    .sidebar-title {
-      font-size: 12px;
-      color: #1a1a1a;
-      font-weight: 600;
-      margin-bottom: 15px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .contact-info {
-      font-size: 13px;
-      color: #555;
-    }
-
-    .contact-info a {
-      color: #0066cc;
-      text-decoration: none;
-    }
-
-    .contact-info a:hover {
-      text-decoration: underline;
-    }
-
-    .platform-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .platform-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 13px;
-    }
-
-    .platform-name {
-      color: #555;
-      font-weight: 500;
-    }
-
-    .platform-link {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: #0066cc;
-      text-decoration: none;
-    }
-
-    .platform-link:hover {
-      text-decoration: underline;
-    }
-
-    .collaborators {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      font-size: 11px;
-      color: #666;
-    }
-
-    .collab-item {
-      padding: 6px 8px;
-      background: #f8f8f8;
-      border: 1px solid #e8e8e8;
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
-      border-radius: 2px;
-    }
-
-    .exhibition-item {
-      font-size: 13px;
-      color: #555;
-      line-height: 1.5;
-    }
-
-    .exhibition-year {
-      font-weight: 600;
-      color: #1a1a1a;
-    }
-
-    .exhibition-org {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: #888;
-    }
-
-    .footer {
-      margin-top: 60px;
-      padding-top: 30px;
-      border-top: 1px solid #eee;
-      text-align: center;
-      font-size: 12px;
-      color: #999;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-      .container {
-        padding: 40px 20px;
-      }
-
-      .main-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .collaborators {
-        grid-template-columns: 1fr;
-      }
-
-      .name {
-        font-size: 24px;
-      }
-    }
-
-</style>
+        @media (max-width: 768px) {
+            #contents {
+                padding: 20px 15px !important;
+            }
+            
+            .row {
+                flex-direction: column;
+            }
+            
+            .collaboration-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            
+            .bio-section {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <header class="header">
-    <h1 class="name">Dan Pradana</h1>
-    <div class="title">Cultural Researcher & Prompt Engineer</div>
-    <div class="bio">
-      <strong>From Ad Copy to Prompt Engineering: Decoding Asian Urban Subcultures</strong><br><br>
-      Dan Pradana ditched traditional advertising to become a cultural archaeologist in the age of AI. Now prompts are his new copywriting language, excavating the collective consciousness of Asian street culture. MXVDXN is his cultural research lab investigating these subcultures through generative AI methodologies.
-    </div>
-  </header>
+    <div id='contents' style='max-width: 900px; margin: 0 auto; padding: 40px 20px;'>
+        <div class='row' id='header'>
+            <div class='10 col'>
+                <h1>DAN PRADANA</h1>
+            </div>
+            <div class='2 col'>
+                <img src='https://pbs.twimg.com/profile_images/1944049982912573442/CCRJQOo5_400x400.jpg' alt='Dan Pradana Profile' style='width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: auto; display: block;'>
+            </div>
+        </div>
+        
+        <hr class='lite-hr'>
+        
+        <!-- Bio Section -->
+        <div class='bio-section'>
+            <div class='highlight-box'>
+                <strong>From Ad Copy to AI-Powered Creative: Decoding Southeast Asian Urban Subcultures</strong>
+            </div>
+            <div class='text-box'>
+                Dan Pradana spent 10 years crafting ad copy before becoming an aesthetic researcher in the age of AI. The foundation remains in writing—now he uses that craft to excavate the collective consciousness of Southeast Asian street culture. He experiments with generative AI to uncover new narratives and explore how technology can decode the nuanced stories of Asian urban communities.
+            </div>
+        </div>
 
-  <div class="main-content">
-    <main class="projects">
-      <div class="project">
-        <div class="project-category">Feature Project</div>
-        <h2 class="project-title">Tumbal Tuesday: Digital Possession Archive</h2>
-        <p class="project-description">
-          Examining the collision between Indonesia's spiritual DNA and hyperconnected reality. Through AI-generated hypermaximalist imagery, this ongoing archive captures how Indonesian youth navigate between traditional cultural practices and digital spaces.
-        </p>
-        <div class="code-snippet">
-prompt digital_animism --context indonesian_youth
---method hypermaximalist_imagery --output cultural_possession
+        <!-- Contact & Social -->
+        <div class='row'>
+            <div class='6 col'>
+                <h3 class='section-title'>Contact</h3>
+                <div class='social-links'>
+                    <a href='mailto:danifpradana@gmail.com'>
+                        <span class='platform-icon email-icon'></span>
+                        danifpradana@gmail.com
+                    </a>
+                </div>
+            </div>
+            <div class='6 col'>
+                <h3 class='section-title'>Digital Presence</h3>
+                <div class='social-links'>
+                    <a href='https://x.com/mxvdxn' target='_blank'>
+                        <span class='platform-icon x-icon'></span>
+                        @mxvdxn
+                    </a><br>
+                    <a href='https://medium.com/@mxvdxn' target='_blank'>
+                        <span class='platform-icon medium-icon'></span>
+                        @mxvdxn
+                    </a><br>
+                    <a href='https://instagram.com/mxvdxn' target='_blank'>
+                        <span class='platform-icon instagram-icon'></span>
+                        @mxvdxn
+                    </a><br>
+                    <a href='https://youtube.com/@mxvdxn' target='_blank'>
+                        <span class='platform-icon youtube-icon'></span>
+                        @mxvdxn
+                    </a><br>
+                    <a href='https://tiktok.com/@mxvdxn.labs' target='_blank'>
+                        <span class='platform-icon tiktok-icon'></span>
+                        @mxvdxn.labs
+                    </a><br>
+                    <a href='https://mxvdxn.gumroad.com' target='_blank'>
+                        <span class='platform-icon gumroad-icon'></span>
+                        Resources
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Focus -->
+        <div class='row'>
+            <div class='12 col'>
+                <h3 class='section-title'>Research Focus</h3>
+                <div class='methodology-list'>
+                    <h4>MXVDXN Labs</h4>
+                    <p style='font-style: italic; margin-bottom: 15px; color: #666;'>
+                        Dan's personal GenAI research lab, exploring the collective mind and decoding the shifting zeitgeist of Asian urban sub-cultures. A practice in sensing, dreaming, and reshaping lived experience.
+                    </p>
+                    <table style='width: 100%; border-collapse: collapse; margin-top: 15px;'>
+                        <tr>
+                            <td style='padding: 12px 0; border-bottom: 1px solid #eee; width: 30%; vertical-align: top;'>
+                                <strong>Aesthetic Building</strong>
+                            </td>
+                            <td style='padding: 12px 0 12px 15px; border-bottom: 1px solid #eee; vertical-align: top;'>
+                                Southeast Asia as playground for aesthetic exploration—building, remixing, reinventing and enhancing narratives through cultural experimentation
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 12px 0; border-bottom: 1px solid #eee; vertical-align: top;'>
+                                <strong>Social Commentary</strong>
+                            </td>
+                            <td style='padding: 12px 0 12px 15px; border-bottom: 1px solid #eee; vertical-align: top;'>
+                                Transforming unique and interesting cultural observations from Southeast Asian life into creative commentary and artistic exploration
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 12px 0; border-bottom: 1px solid #eee; vertical-align: top;'>
+                                <strong>Visual Culture Research</strong>
+                            </td>
+                            <td style='padding: 12px 0 12px 15px; border-bottom: 1px solid #eee; vertical-align: top;'>
+                                Leveraging Southeast Asia's diverse cultures to research how AI perceives and interprets cultural nuance and accuracy
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 12px 0; vertical-align: top;'>
+                                <strong>Creative Ads Playground</strong>
+                            </td>
+                            <td style='padding: 12px 0 12px 15px; vertical-align: top;'>
+                                Using AI tools to experiment with speculative advertising ideas for Southeast Asian markets, exploring concepts that push beyond real-world constraints
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Work -->
+        <div class='row'>
+            <div class='12 col'>
+                <h3 class='section-title'>Featured Research</h3>
+                <div class='card'>
+                    <h4>Why I'm using GenAI video to make things look boring — and human?</h4>
+                    <img src='https://miro.medium.com/v2/resize:fit:1400/format:webp/1*y8nZBkbXKHM6xlIpUhDnBA.png' alt='GenAI video naturalism research' style='width: 100%; height: auto; border-radius: 6px; margin: 15px 0;'>
+                    <div class='text-box'>
+                        Exploring naturalism through AI-generated video — how GenAI can capture the mundane, 
+                        boring, and deeply human moments that often get lost in our pursuit of the spectacular. 
+                        This research examines the potential of AI tools to create authentic, everyday narratives 
+                        that feel genuinely lived-in rather than artificially enhanced.
+                    </div>
+                    <a href='https://medium.com/@mxvdxn/why-im-using-genai-video-to-make-things-look-boring-and-human-1398433e3132' target='_blank'>→ Read on Medium</a>
+                    
+                    <div style='margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;'>
+                        <h5 style='margin-bottom: 10px;'>Experiment in Action:</h5>
+                        <p style='font-size: 14px; color: #666; margin-bottom: 15px;'>
+                            One of my experiments with Flux Kontext and Kling AI that gained traction on X. Here I try to emulate the typical DJ set format popular on YouTube, but placed in everyday, mundane locations like a laundry room. The goal was to push GenAI video toward a whole new level of realism — making the extraordinary feel ordinary, and the ordinary feel cinematic.
+                        </p>
+                        <div style='display: flex; justify-content: center; margin: 20px 0;'>
+                            <blockquote class="twitter-tweet" data-media-max-width="500"><p lang="en" dir="ltr">This is why <a href="https://twitter.com/Kling_ai?ref_src=twsrc%5Etfw">@Kling_ai</a> is still my favorite 😎<br>Flux Kontext [Max] · Kling 2.1 Master · Suno v4.5+ <a href="https://t.co/nPhSMYCDCl">pic.twitter.com/nPhSMYCDCl</a></p>&mdash; Dan Pradana (@mxvdxn) <a href="https://twitter.com/mxvdxn/status/1946609285745828145?ref_src=twsrc%5Etfw">July 19, 2025</a></blockquote>
+                            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Placeholder -->
+        <div class='row'>
+            <div class='12 col'>
+                <h3 class='section-title'>Projects</h3>
+                <div class='card'>
+                    <h4>Tumbal Tuesday: Digital Possession Archive</h4>
+                    <img src='https://pbs.twimg.com/media/GwZd2qbbEAA06Ed?format=jpg&name=large' alt='Tumbal Tuesday Digital Possession Archive' style='width: 100%; height: auto; border-radius: 6px; margin: 15px 0;'>
+                    <div class='text-box'>
+                        Examining the collision between Indonesia's spiritual DNA and hyperconnected reality. 
+                        Through AI-generated hypermaximalist imagery, this ongoing archive captures how Indonesian 
+                        youth navigate between traditional cultural practices and digital spaces.
+                    </div>
+                    <div class='code-block'>
+prompt digital_animism --context indonesian_youth<br>
+--method hypermaximalist_imagery --output cultural_possession<br>
 --frequency tuesday --seed sacred_chaos
+                    </div>
+                    <a href='https://danifpradana.github.io/tumbal-tuesday/' target='_blank'>→ Explore Archive</a>
+                </div>
+            </div>
         </div>
-        <a href="https://danifpradana.github.io/tumbal-tuesday/" target="_blank" class="project-link">Read Here →</a>
-      </div>
 
-      <div class="project">
-        <div class="project-category">Gen AI Labs</div>
-        <h2 class="project-title">MXVDXN: Research Laboratory</h2>
-        <p class="project-description">
-          A systematic investigation into collective consciousness using advanced prompt engineering techniques. This research explores how generative AI can surface, interpret, and reconfigure cultural patterns within Asian urban digital communities, combining computational ethnography with street culture observation.
-        </p>
-      </div>
-    </main>
-
-    <aside class="sidebar">
-      <div class="sidebar-section">
-        <div class="sidebar-title">Contact</div>
-        <div class="contact-info">
-          <a href="mailto:danifpradana@gmail.com">danifpradana@gmail.com</a>
+        <!-- X Posts Placeholder -->
+        <div class='row'>
+            <div class='12 col'>
+                <h3 class='section-title'>Experiment Highlights</h3>
+                <div class='card'>
+                    <h4>Sonic Destruction Research</h4>
+                    <div class='text-box'>
+                        <strong>Feedback Ritual with Veo 3:</strong> Exploring how AI can capture the raw, destructive energy of noise rock performance. This experiment uses Veo 3 to channel the intensity of a Thai woman artist destroying her guitar in a typical noise music concert setting — investigating how cultural expressions of rebellion and sonic destruction translate through generative AI. The piece examines the intersection of traditional performance art, contemporary noise culture, and AI's ability to understand and recreate moments of creative chaos.
+                    </div>
+                    <div style='display: flex; justify-content: center; margin: 20px 0;'>
+                        <blockquote class="twitter-tweet" data-media-max-width="500"><p lang="en" dir="ltr">Feedback ritual with pedals bought from Shopee • Veo 3 <a href="https://t.co/Ln1Yg9VIPH">pic.twitter.com/Ln1Yg9VIPH</a></p>&mdash; Dan Pradana (@mxvdxn) <a href="https://twitter.com/mxvdxn/status/1950867368739230085?ref_src=twsrc%5Etfw">July 31, 2025</a></blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+                
+                <div class='card'>
+                    <h4>Micro-Narrative Experiments with Hailuo AI 02</h4>
+                    <div class='text-box'>
+                        <strong>10-Second Cinematic Storytelling:</strong> A deep dive into the potential of ultra-short form video generation using Hailuo AI 02's text-to-video capabilities. These experiments feature a badass Thai high school girl protagonist slaying monsters through heavy editing and sound design. Working within the constraint of just 10 seconds of generated footage, the project explores how post-production can transform AI-generated clips into compelling micro-narratives that capture the essence of action cinema and contemporary Asian youth culture's relationship with fantasy and power.
+                    </div>
+                    <div style='display: flex; justify-content: center; margin: 20px 0;'>
+                        <blockquote class="twitter-tweet" data-media-max-width="500"><p lang="en" dir="ltr">Made with <a href="https://twitter.com/Hailuo_AI?ref_src=twsrc%5Etfw">@Hailuo_AI</a> 02 text2vid + MMAudio · Pixabay <a href="https://t.co/VZiDB28Y5l">pic.twitter.com/VZiDB28Y5l</a></p>&mdash; Dan Pradana (@mxvdxn) <a href="https://twitter.com/mxvdxn/status/1945527166269362245?ref_src=twsrc%5Etfw">July 16, 2025</a></blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                    <div style='display: flex; justify-content: center; margin: 20px 0;'>
+                        <blockquote class="twitter-tweet" data-media-max-width="500"><p lang="en" dir="ltr">Made with <a href="https://twitter.com/Hailuo_AI?ref_src=twsrc%5Etfw">@Hailuo_AI</a> 02 text2vid + MMAudio <a href="https://t.co/tmK1iL5rxf">https://t.co/tmK1iL5rxf</a> <a href="https://t.co/NZMzs48ji8">pic.twitter.com/NZMzs48ji8</a></p>&mdash; Dan Pradana (@mxvdxn) <a href="https://twitter.com/mxvdxn/status/1945847949260644426?ref_src=twsrc%5Etfw">July 17, 2025</a></blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-title">Platforms</div>
-        <ul class="platform-list">
-          <li class="platform-item">
-            <span class="platform-name">X/Twitter</span>
-            <a href="https://x.com/mxvdxn" target="_blank" class="platform-link">@mxvdxn</a>
-          </li>
-          <li class="platform-item">
-            <span class="platform-name">Medium</span>
-            <a href="https://medium.com/@mxvdxn" target="_blank" class="platform-link">@mxvdxn</a>
-          </li>
-          <li class="platform-item">
-            <span class="platform-name">Instagram</span>
-            <a href="https://instagram.com/mxvdxn" target="_blank" class="platform-link">@mxvdxn</a>
-          </li>
-          <li class="platform-item">
-            <span class="platform-name">YouTube</span>
-            <a href="https://youtube.com/@mxvdxn" target="_blank" class="platform-link">@mxvdxn</a>
-          </li>
-          <li class="platform-item">
-            <span class="platform-name">TikTok</span>
-            <a href="https://tiktok.com/@mxvdxn.labs" target="_blank" class="platform-link">@mxvdxn.labs</a>
-          </li>
-          <li class="platform-item">
-            <span class="platform-name">Resources</span>
-            <a href="https://mxvdxn.gumroad.com" target="_blank" class="platform-link">gumroad</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <div class="sidebar-title">Creative Partnership</div>
-        <div class="collaborators">
-          <div class="collab-item">hailuo minimax</div>
-          <div class="collab-item">kling ai</div>
-          <div class="collab-item">luma labs</div>
-          <div class="collab-item">vidu</div>
-          <div class="collab-item">freepik</div>
-          <div class="collab-item">basedlabs ai</div>
-          <div class="collab-item">higgsfield</div>
+        <!-- Creative Partnerships -->
+        <div class='row'>
+            <div class='12 col'>
+                <h3 class='section-title'>Creative Partnerships</h3>
+                <div class='collaboration-grid'>
+                    <div class='collab-tag'>hailuo minimax</div>
+                    <div class='collab-tag'>kling ai</div>
+                    <div class='collab-tag'>luma labs</div>
+                    <div class='collab-tag'>vidu</div>
+                    <div class='collab-tag'>freepik</div>
+                    <div class='collab-tag'>basedlabs ai</div>
+                    <div class='collab-tag'>higgsfield</div>
+                </div>
+                
+                <h3 class='section-title' style='margin-top: 40px;'>Exhibitions</h3>
+                <div class='text-box'>
+                    <strong>2025</strong> — aigorithm: ai art exhibition<br>
+                    <em>orès collective</em>
+                </div>
+            </div>
         </div>
-      </div>
 
-      <div class="sidebar-section">
-        <div class="sidebar-title">Exhibitions</div>
-        <div class="exhibition-item">
-          <span class="exhibition-year">2025</span> — aigorithm: ai art exhibition<br/>
-          <span class="exhibition-org">orès collective</span>
+        <hr class='lite-hr'>
+        
+        <div id='footer' style='text-align: center; color: #666; margin-top: 40px;'>
+            &copy; 2025 MXVDXN Research — Cultural Archaeology in the Age of AI
         </div>
-      </div>
-    </aside>
-  </div>
-
-  <footer class="footer">
-    MXVDXN Research © 2025
-  </footer>
-</div>
+    </div>
 </body>
 </html>
